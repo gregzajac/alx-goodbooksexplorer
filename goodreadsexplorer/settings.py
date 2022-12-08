@@ -37,8 +37,10 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    'django_extensions',
 
-    "books.apps.BooksConfig"
+    "books.apps.BooksConfig",
+    "posts.apps.PostsConfig",
 ]
 
 MIDDLEWARE = [
@@ -49,6 +51,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "books.middleware.simple_middleware",
 ]
 
 ROOT_URLCONF = "goodreadsexplorer.urls"
@@ -65,6 +68,7 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
+                "books.context_processors.from_email"
             ],
         },
     },
@@ -124,3 +128,8 @@ STATIC_URL = "static/"
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+SHELL_PLUS_PRINT_SQL = True
+
+
+LOGIN_REDIRECT_URL = "/books/"
+LOGOUT_REDIRECT_URL = "/books/"

@@ -1,12 +1,36 @@
 {% extends 'base.html' %}
+{% load books_extras %}
 
 {% block content %}
+
   <h1>Lista książek</h1>
+  <div>{% current_time "%Y-%m-%d %I:%M %p" as the_time %}
+
+<p>The time is {{ the_time }}.</p></div>
+  {% include "common/search.html" %}
+
+  {% regroup page_obj by publisher as books_list %}
+
   <ul>
-  {% for book in books %}
-    <li>{{ book.title }}</li>
+  {% for publisher in books_list %}
+
+    <li>{{ publisher.grouper }}
+      <ul>
+        {% for book in publisher.list %}
+          <li>{{ book.title|cut:"arry" }}</li>
+        {% endfor %}
+      </ul>
+    </li>
   {% endfor %}
   </ul>
+
+Email: {{ DEFAULT_FROM_EMAIL }}
+  {{ user }}
+
+{% endblock %}
+
+{% block paginator %}
+{% include "common/paginator.html" %}
 {% endblock %}
 
 {% block title %} Lista książek {% endblock %}

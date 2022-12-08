@@ -7,8 +7,14 @@
 
 <body>
 
-{% block content %}
+{% include 'common/header.html' %}
+{% include 'common/nav.html' %}
 
+{% block content %}
+{% endblock %}
+
+
+{% block paginator %}
 {% endblock %}
 
 </body>

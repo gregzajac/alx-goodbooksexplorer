@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Lista postów</h1>
+  <ul>
+  {% for post in page_obj %}
+    <li><a href="{% url "posts:details" post.id %}">{{ post }}</a></li>
+  {% endfor %}
+  </ul>
+
+
+  {% if user.is_authenticated %}
+
+    <form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+     <input type="submit" value="Dodaj">
+    </form>
+
+  {% endif %}
+
+{% endblock %}
+
+{% block paginator %}
+  {% include "common/paginator.html" %}
+{% endblock %}
+

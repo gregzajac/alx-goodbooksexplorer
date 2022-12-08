@@ -1,0 +1,8 @@
+<div>
+{% if user.is_authenticated %}
+  hello {{ user }}
+  <a href="{% url 'logout' %}">logout</a>
+{% else %}
+  <a href="{% url 'login' %}">login</a>
+{% endif %}
+</div>
