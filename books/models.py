@@ -14,6 +14,6 @@ class Book(models.Model):
     language_code = models.CharField(max_length=6)
     num_pages = models.IntegerField()
     ratings_count = models.IntegerField()
-    text_review_counts = models.IntegerField()
+    text_reviews_count = models.IntegerField()
     publication_date = models.DateTimeField()
     publisher = models.CharField(max_length=255)
